@@ -13,11 +13,26 @@ const PORT = process.env.PORT;
 //
 async function main() {
     const app = express();
+    
 
     app.set("views", path.join(__dirname, "views")); // Set directory that contains templates for views.
     app.set("view engine", "hbs"); // Use hbs as the view engine for Express.
     
     app.use(express.static("public"));
+
+
+    app.get("/advertise", async (req, res) => {
+    try {
+        const response = await axios.get("http://advertise-service/ads");
+        const advertisements = response.data.advertisements;
+        res.render("advertise", { advertisements });
+    } catch (error) {
+        console.error("Error fetching ads:", error);
+        res.render("advertise", { advertisements: [] });
+    }
+    });
+
+
 
     //
     // Main web page that lists videos.

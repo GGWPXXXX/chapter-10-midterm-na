@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Shopee",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee.svg/2560px-Shopee.svg.png",
+    "url": "https://shopee.co.th"
+  },
+  {
+    "name": "Lazada",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Lazada_%282019%29.svg/1454px-Lazada_%282019%29.svg.png",
+    "url": "https://lazada.co.th"
+  },
+  {
+    "name": "Kaidee",
+    "image": "https://s.isanook.com/hi/0/ud/283/1416849/KaideeLogo.png.png",
+    "url": "https://kaidee.com"
+  }
+]

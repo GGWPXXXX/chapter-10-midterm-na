@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ashleydavis/db-fixture-rest-api#readme",
   "dependencies": {
+    "db-fixture-rest-api": "file:",
     "express": "^5.0.0-beta.1",
     "globby": "^9.1.0",
     "mongodb": "^6.0.0",

@@ -15,6 +15,7 @@
   "dependencies": {
     "amqplib": "^0.10.3",
     "express": "^5.0.0-beta.1",
+    "metadata": "file:",
     "mongodb": "^6.0.0",
     "wait-port": "^0.2.6"
   },
