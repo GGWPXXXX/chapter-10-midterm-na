@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metadata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metadata
+  template:
+    metadata:
+      labels:
+        app: metadata
+    spec:
+      containers:
+        - name: metadata
+          image: midtermexam.azurecr.io/metadata:latest
+          ports:
+            - containerPort: 80
+          environment:
+            - name: DBHOST
+              value: mongodb://db:27017
+            - name: DBNAME
+              value: metadata
+            - name: RABBIT
+              value: amqp://test:test@rabbit:5672
+            - name: NODE_ENV
+              value: development
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: metadata-service
+spec:
+  selector:
+    app: metadata
+  ports:
+    - port: 80

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-fixture-rest-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-fixture-rest-api
+  template:
+    metadata:
+      labels:
+        app: db-fixture-rest-api
+    spec:
+      containers:
+        - name: db-fixture-rest-api
+          image: midtermexam.azurecr.io/db-fixture-rest-api:latest
+          ports:
+            - containerPort: 80
+          environment:
+            - name: DBHOST
+              value: mongodb://db:27017
+            - name: FIXTURES_DIR
+              value: fixtures
+          volumeMounts:
+            - name: fixtures-volume
+              mountPath: /usr/src/app/fixtures
+      volumes:
+        - name: fixtures-volume
+          hostPath:
+            path: ./fixtures
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-fixture-rest-api-service
+spec:
+  selector:
+    app: db-fixture-rest-api
+  ports:
+    - port: 80
